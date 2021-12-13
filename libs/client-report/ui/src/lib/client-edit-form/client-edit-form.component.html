@@ -1,0 +1,272 @@
+<form [formGroup]="clientForm">
+  <div class="form-group">
+    <div class="control">
+      <label for="name" class="labelclass">Name</label>
+      <div>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          #name
+          formControlName="name"
+        />
+        <div
+          *ngIf="
+            clientForm.controls['name']?.invalid &&
+            (clientForm.controls['name'].dirty ||
+              clientForm.controls['name'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['name'].errors?.required">
+            Name is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label for="gender">Gender</label>
+      <div>
+        <select
+          class="form-control"
+          id="gender"
+          name="gender"
+          formControlName="gender"
+        >
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+        </select>
+        <div
+          *ngIf="
+            clientForm.controls['gender']?.invalid &&
+            (clientForm.controls['gender'].dirty ||
+              clientForm.controls['gender'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['gender'].errors?.required">
+            Gender is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label for="DOB">Date of Birth</label>
+      <div>
+        <input
+          type="date"
+          class="form-control"
+          id="DOB"
+          name="DOB"
+          formControlName="DOB"
+          [max]="todaysDate()"
+        />
+        <div
+          *ngIf="
+            clientForm.controls['DOB']?.invalid &&
+            (clientForm.controls['DOB'].dirty ||
+              clientForm.controls['DOB'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['DOB'].errors?.required">
+            Date of birth is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label for="iban">IBAN</label>
+      <div>
+        <input
+          type="text"
+          class="form-control"
+          id="iban"
+          name="iban"
+          formControlName="iban"
+        />
+        <div
+          *ngIf="
+            clientForm.controls['iban']?.invalid &&
+            (clientForm.controls['iban'].dirty ||
+              clientForm.controls['iban'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['iban'].errors?.required">
+            IBAN is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label for="email">Email Address</label>
+      <div>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          name="email"
+          formControlName="email"
+        />
+        <div
+          *ngIf="
+            clientForm.controls['email']?.invalid &&
+            (clientForm.controls['email'].dirty ||
+              clientForm.controls['email'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['email'].errors?.required">
+            Email Address is required.
+          </div>
+          <div *ngIf="clientForm.controls['email'].errors?.email">
+            Please check the email address.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label for="postcode">Postcode</label>
+      <div>
+        <input
+          type="text"
+          class="form-control"
+          id="postcode"
+          name="postcode"
+          formControlName="postcode"
+        />
+        <div
+          *ngIf="
+            clientForm.controls['postcode']?.invalid &&
+            (clientForm.controls['postcode'].dirty ||
+              clientForm.controls['postcode'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['postcode'].errors?.required">
+            Postcode is required.
+          </div>
+          <div *ngIf="clientForm.controls['postcode'].errors?.postcode">
+            Please check the postcode.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label>House No.| addition</label>
+      <div>
+        <span style="display: inline-flex">
+          <input
+            type="text"
+            class="form-control house-number"
+            id="houseno"
+            name="houseno"
+            formControlName="houseno"
+          />
+          <input
+            type="text"
+            class="form-control addition-class"
+            id="add"
+            name="add"
+            formControlName="add"
+          />
+        </span>
+        <div
+          *ngIf="
+            clientForm.controls['houseno']?.invalid &&
+            (clientForm.controls['houseno'].dirty ||
+              clientForm.controls['houseno'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['houseno'].errors?.required">
+            House number is required.
+          </div>
+        </div>
+        <div
+          *ngIf="
+            clientForm.controls['add']?.invalid &&
+            (clientForm.controls['add'].dirty ||
+              clientForm.controls['add'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['add'].errors?.required">
+            Addition is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label for="city">City</label>
+      <div>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          name="city"
+          formControlName="city"
+        />
+        <div
+          *ngIf="
+            clientForm.controls['city']?.invalid &&
+            (clientForm.controls['city'].dirty ||
+              clientForm.controls['city'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['city'].errors?.required">
+            City is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label for="country">Country</label>
+      <div>
+        <select
+          class="form-control"
+          id="country"
+          name="country"
+          formControlName="country"
+        >
+          <option>Netherlands</option>
+          <option>Belgium</option>
+          <option>Germany</option>
+        </select>
+        <div
+          *ngIf="
+            clientForm.controls['country']?.invalid &&
+            (clientForm.controls['country'].dirty ||
+              clientForm.controls['country'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="clientForm.controls['postcode'].errors?.required">
+            Country is required.
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="p-ripple p-element p-button p-component p-button-secondary" (click)="navigateToList()">
+      Cancel</button
+    >&nbsp;&nbsp;
+    <button
+      class="p-ripple p-element p-button p-component p-button-success"
+      type="submit"
+      (click)="formSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+</form>

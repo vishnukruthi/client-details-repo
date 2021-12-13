@@ -1,0 +1,41 @@
+<p-table
+  [columns]="columns"
+  [value]="clientList"
+  [style]="{ width: '100%', overflow: 'auto' }"
+  [paginator]="true"
+  [rows]="10"
+>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th
+        class="table-header"
+        [pSortableColumn]="col.field"
+        *ngFor="let col of columns"
+      >
+        {{ col.header }}
+        <p-sortIcon
+          *ngIf="col.field !== 'action'"
+          field="{{ col.field }}"
+        ></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-tableData let-columns="columns">
+    <tr>
+      <td class="table-column" *ngFor="let col of columns">
+        <ng-content
+          *ngIf="col.field === 'action'; then actionBlock; else dataBlock"
+        ></ng-content>
+        <ng-template #dataBlock>{{ tableData[col.field] }} </ng-template>
+        <ng-template #actionBlock>
+          <p-button
+            label="Edit"
+            icon="pi pi-pencil"
+            iconPos="left"
+            (click)="editDetails(tableData)"
+          ></p-button>
+        </ng-template>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
